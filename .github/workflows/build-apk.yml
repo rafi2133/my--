@@ -25,8 +25,10 @@ jobs:
         pip install -r requirements.txt
         pip install flet[build]
 
-    - name: Build APK
-      run: flet build apk
+    - name: Build APK (auto‑accept prompts)
+      run: |
+        # Pipe 'y' to accept any interactive prompts (licenses, etc.)
+        yes | flet build apk
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
